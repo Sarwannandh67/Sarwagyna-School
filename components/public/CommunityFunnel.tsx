@@ -65,7 +65,7 @@ const trustPoints = [
   '100% free to join',
   'No spam or promotions',
   'Student-first community',
-  'English & Telugu welcome',
+  'Any language  welcome',
 ];
 
 export interface CommunityFunnelProps {

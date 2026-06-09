@@ -31,9 +31,10 @@ function getPageTitle(pathname: string): string {
 
 interface AdminTopbarProps {
   adminName: string;
+  onMenuToggle?: () => void;
 }
 
-export function AdminTopbar({ adminName }: AdminTopbarProps) {
+export function AdminTopbar({ adminName, onMenuToggle }: AdminTopbarProps) {
   const pathname = usePathname();
-  return <Topbar pageTitle={getPageTitle(pathname)} adminName={adminName} />;
+  return <Topbar pageTitle={getPageTitle(pathname)} adminName={adminName} onMenuToggle={onMenuToggle} />;
 }
