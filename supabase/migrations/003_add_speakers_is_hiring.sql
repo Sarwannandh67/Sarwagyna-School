@@ -1,0 +1,2 @@
+ALTER TABLE speakers
+  ADD COLUMN IF NOT EXISTS is_hiring BOOLEAN DEFAULT false;

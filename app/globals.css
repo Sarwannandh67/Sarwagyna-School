@@ -1,0 +1,56 @@
+:root {
+  --canvas: #fffefb;
+  --canvas-soft: #f8f4f0;
+  --ink: #201515;
+  --ink-soft: #2f2a26;
+  --body: #605d52;
+  --body-mid: #939084;
+  --mute: #c5c0b1;
+  --primary: #ff4f00;
+  --on-primary: #fffefb;
+  --radius: 12px;
+  --radius-pill: 9999px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-medium text-ink;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[13px] font-medium uppercase tracking-[1.5px] text-body-mid;
+  }
+
+  .card {
+    @apply rounded-[12px] bg-canvas-soft;
+  }
+
+  .card-dark {
+    @apply rounded-[12px] bg-ink text-canvas-soft;
+  }
+
+  .card-outlined {
+    @apply rounded-[12px] border border-ink bg-canvas;
+  }
+}
