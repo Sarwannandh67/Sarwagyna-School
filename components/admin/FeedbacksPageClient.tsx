@@ -76,10 +76,10 @@ export function FeedbacksPageClient({ feedbacks, stats }: FeedbacksPageClientPro
     }
   };
 
-  const checkedCount = [...checkedIds].filter((id) => allFilteredIds.includes(id)).length;
+  const checkedCount = Array.from(checkedIds).filter((id) => allFilteredIds.includes(id)).length;
 
   const handleBulkApprove = () => {
-    const ids = [...checkedIds].filter((id) => allFilteredIds.includes(id));
+    const ids = Array.from(checkedIds).filter((id) => allFilteredIds.includes(id));
     startTransition(async () => {
       await bulkApproveFeedbacks(ids);
       setCheckedIds(new Set());
