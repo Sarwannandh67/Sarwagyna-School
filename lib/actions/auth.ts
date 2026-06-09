@@ -15,18 +15,24 @@ export async function loginAction(
     return { error: 'Email and password are required' };
   }
 
-  const { data } = await supabaseAdmin
-    .from('admin_users')
-    .select('*')
-    .eq('email', email)
-    .eq('password', password)
-    .single();
+  try {
+    const { data, error } = await supabaseAdmin
+      .from('admin_users')
+      .select('*')
+      .eq('email', email)
+      .eq('password', password)
+      .single();
 
-  if (!data) {
-    return { error: 'Invalid email or password' };
+    if (error || !data) {
+      return { error: 'Invalid email or password' };
+    }
+
+    await createSession({ id: data.id, email: data.email, name: data.name });
+  } catch {
+    return { error: 'Something went wrong. Please try again.' };
   }
 
-  await createSession({ id: data.id, email: data.email, name: data.name });
+  // redirect() must be outside try-catch — Next.js implements it via a thrown error
   redirect('/admin');
 }
 
