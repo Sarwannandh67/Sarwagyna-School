@@ -4,26 +4,26 @@ import type { Metadata } from 'next';
 import { EventCard } from '@/components/public/EventCard';
 
 export const metadata: Metadata = {
-  title: 'Events — Free Webinars, Workshops & Hackathons for Students',
+  title: 'Sessions — Sarwagyna School',
   description:
-    'Browse all Sarwagyna School events — free webinars, workshops, hackathons, and ideathons for Indian college students and freshers. Filter by type and register free.',
+    'Every session at Sarwagyna School is run by a founder or practitioner. Webinars, workshops, hackathons, and ideathons — free to start. Register and be in the room.',
   keywords: [
-    'free webinars for students India 2026',
-    'hackathons for college students India',
-    'free workshops for freshers India',
-    'ideathons India students',
-    'career webinars India',
+    'free sessions for students',
+    'hackathons for students',
+    'free workshops for students',
+    'founder-taught sessions',
+    'career sessions for students',
   ],
   openGraph: {
-    title: 'Events — Free Webinars, Workshops & Hackathons for Students',
-    description: 'All Sarwagyna School events in one place. Free webinars, workshops, hackathons, and ideathons. Register now.',
+    title: 'Sessions — Sarwagyna School',
+    description: 'Every session is a door. Free webinars, workshops, hackathons, and ideathons — run by founders and practitioners.',
     url: 'https://school.sarwagyna.com/events',
-    images: [{ url: '/og/events.png', width: 1200, height: 630, alt: 'Sarwagyna School Events' }],
+    images: [{ url: '/og/events.png', width: 1200, height: 630, alt: 'Sarwagyna School Sessions' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Events — Sarwagyna School',
-    description: 'Free webinars, workshops, hackathons for students. Register now.',
+    title: 'Sessions — Sarwagyna School',
+    description: 'Every session is a door. Free webinars, workshops, hackathons — taught by founders.',
     images: ['/og/events.png'],
   },
   alternates: { canonical: 'https://school.sarwagyna.com/events' },
@@ -68,12 +68,13 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
     <>
       <section className="px-4 py-16 sm:px-6">
         <div className="mx-auto max-w-6xl">
-          <p className="eyebrow">All events</p>
+          <p className="eyebrow">All sessions</p>
           <h1 className="mt-4 text-4xl font-medium text-ink sm:text-5xl">
-            Sessions, workshops, and more.
+            Every session is a door.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-body">
-            Every event we host — live sessions, hands-on workshops, hackathons, and ideathons.
+            Webinars, workshops, hackathons, and ideathons — run by people who hire, invest, and build.
+            The learning is the entry point. What you do with the room is up to you.
           </p>
         </div>
       </section>
@@ -103,7 +104,7 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
           <section className="px-4 py-8 sm:px-6">
             <div className="mx-auto max-w-6xl">
               <p className="eyebrow">Coming up</p>
-              <h2 className="mt-2 text-2xl font-medium text-ink sm:text-3xl">Upcoming events</h2>
+              <h2 className="mt-2 text-2xl font-medium text-ink sm:text-3xl">Coming up — be in the room</h2>
               {upcomingEvents.length > 0 ? (
                 <div className="mt-8 grid gap-6 md:grid-cols-2">
                   {upcomingEvents.map((event) => (
@@ -128,9 +129,9 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
             <section className="bg-canvas-soft px-4 py-16 sm:px-6">
               <div className="mx-auto max-w-6xl">
                 <p className="eyebrow">Archive</p>
-                <h2 className="mt-2 text-2xl font-medium text-ink sm:text-3xl">Past events</h2>
+                <h2 className="mt-2 text-2xl font-medium text-ink sm:text-3xl">What we covered</h2>
                 <p className="mt-2 text-body">
-                  Sessions we&apos;ve already hosted — watch recordings and explore what you missed.
+                  Sessions already run — recordings, speakers, and proof you were in the room.
                 </p>
                 <div className="mt-8 grid gap-6 md:grid-cols-2">
                   {pastEvents.map((event) => (

@@ -8,16 +8,16 @@ import { fetchSiteSettings, fetchTestimonials } from '@/lib/data/public';
 export const metadata: Metadata = {
   title: 'Community — 410+ Students',
   description:
-    'Join 410+ Indian college students in the Sarwagyna School WhatsApp community. Get first access to sessions, real opportunities, and honest career advice.',
+    'Join 410+ ambitious students in the Sarwagyna School community. Opportunities before they go public, first access to sessions, and direct access to speakers.',
   keywords: [
-    'student community India WhatsApp',
-    'college students community India',
-    'career community for freshers India',
-    'startup community for students India',
+    'student community WhatsApp',
+    'career community for students',
+    'startup community for students',
+    'Sarwagyna School community',
   ],
   openGraph: {
     title: 'Join 410+ Students — Sarwagyna School Community',
-    description: '410+ students. One WhatsApp. Real opportunities, first access to events, and honest advice.',
+    description: '410+ students. One room. Zero noise. Opportunities before they go public.',
     url: 'https://school.sarwagyna.com/community',
     images: [{ url: '/og/community.png', width: 1200, height: 630, alt: 'Sarwagyna School Community' }],
   },
@@ -28,23 +28,27 @@ import { WhatsAppButton, WhatsAppCTA } from '@/components/ui/WhatsAppButton';
 
 const benefits = [
   {
-    title: 'First access',
-    description: 'Be the first to know about new events, workshops, and opportunities.',
+    title: 'First access to sessions',
+    description:
+      'Every registration link goes here before it goes anywhere else. By the time it hits a job board, this room already knew.',
     icon: '🔔',
   },
   {
-    title: 'Real network',
-    description: 'Connect with ambitious students, founders, and mentors who actually show up.',
-    icon: '🤝',
-  },
-  {
-    title: 'Opportunities',
-    description: 'Hear about internships, hackathons, and hiring before they go public.',
+    title: 'Opportunities before they\'re posted',
+    description:
+      'Founders in this network share openings here first. Not on job boards. Not on social media. Here.',
     icon: '🚀',
   },
   {
-    title: 'Honest advice',
-    description: 'Ask questions and get straight answers — no corporate fluff.',
+    title: 'Direct access to speakers',
+    description:
+      'After every session, speakers are reachable. Questions, conversations, introductions — it starts here.',
+    icon: '🤝',
+  },
+  {
+    title: 'A network that compounds',
+    description:
+      'Every person inside is building something. The connections made here tend to matter later.',
     icon: '💬',
   },
 ];
@@ -66,10 +70,11 @@ export default async function CommunityPage() {
         <div className="mx-auto max-w-6xl text-center">
           <p className="eyebrow text-canvas-soft/60">The community</p>
           <h1 className="mt-4 text-4xl font-medium text-canvas sm:text-5xl">
-            {communityCount} students. One WhatsApp. Zero noise.
+            {communityCount}+ students. One room. Zero noise.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-canvas-soft/80">
-            A focused community of learners who want more than what college offers.
+            This is where opportunities land before they go public. Job leads. Internship openings.
+            Founder referrals. Early access to every session. The conversations that don&apos;t happen on LinkedIn.
           </p>
           <WhatsAppButton href={whatsappUrl || WHATSAPP_CHANNEL_URL} size="lg" className="mt-8">
             Join Now
@@ -119,8 +124,8 @@ export default async function CommunityPage() {
 
       <WhatsAppCTA
         href={whatsappUrl || WHATSAPP_CHANNEL_URL}
-        heading={`Ready to join ${communityCount}+ learners?`}
-        subtext="No spam. No noise. Just a community that helps you grow."
+        heading="The room is open. The opportunities are not guaranteed."
+        subtext="Get in. Stay active. Something will open."
       />
     </>
   );

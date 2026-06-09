@@ -8,16 +8,16 @@ import { fetchAboutStats, fetchSiteSettings } from '@/lib/data/public';
 export const metadata: Metadata = {
   title: 'About — Built by a Student, for Students',
   description:
-    'Sarwagyna School is an initiative of Sarwagyna Private Limited, Ongole, Andhra Pradesh. Founded to teach Indian students what colleges consistently leave out.',
+    'Sarwagyna School is an initiative of Sarwagyna Private Limited. Built to teach ambitious students what universities consistently leave out.',
   keywords: [
     'about Sarwagyna School',
-    'Sarwagyna Private Limited edtech',
-    'student-founded edtech India',
-    'Sarwagyna School Ongole Andhra Pradesh',
+    'Sarwagyna Private Limited',
+    'student-founded edtech',
+    'Sarwagyna School founders',
   ],
   openGraph: {
     title: 'About Sarwagyna School — Built by a Student, for Students',
-    description: 'Founded by a student. Backed by Sarwagyna Private Limited. Built to teach what Indian colleges leave out.',
+    description: 'Founded by a student. Backed by Sarwagyna Private Limited. Built to teach what universities leave out.',
     url: 'https://school.sarwagyna.com/about',
     images: [{ url: '/og/about.png', width: 1200, height: 630, alt: 'About Sarwagyna School' }],
   },
@@ -46,7 +46,8 @@ const milestones = [
   {
     year: 'Future',
     title: 'A full Sarwagyna institution',
-    description: 'Expand into a comprehensive School platform for real-world education in India.',
+    description:
+      'A full educational institution built on the belief that the most valuable knowledge should not be gated behind geography, money, or the right connections.',
   },
 ];
 
@@ -66,11 +67,11 @@ export default async function AboutPage() {
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow">About us</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-medium text-ink sm:text-5xl">
-            Built by a student. For students.
+            Built by a student. For the students who want more.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-body">
-            Sarwagyna School is an edtech initiative under Sarwagyna Private Limited, based in
-            Ongole, Andhra Pradesh.
+            Not more certificates. More access. More truth. More of what actually matters
+            once the degree stops being relevant.
           </p>
         </div>
       </section>
@@ -111,12 +112,15 @@ export default async function AboutPage() {
           <div className="card mt-6 p-6 sm:p-8">
             <h3 className="text-xl font-medium text-ink">Sarwagyna Private Limited</h3>
             <p className="mt-4 text-body">
-              Sarwagyna School operates under Sarwagyna Private Limited, a company registered in
-              Ongole, Andhra Pradesh, India. We are building education products that complement —
-              not replace — what students learn in college.
+              Sarwagyna School is an initiative of Sarwagyna Private Limited — a technology company
+              committed to building intelligent systems that work in the real world.
             </p>
-            <p className="mt-4 text-sm text-body-mid">
-              CIN: U62099AP2024PTC118765 · Registered office: Ongole, Andhra Pradesh
+            <p className="mt-3 text-body">
+              Sarwagyna (Sanskrit: सर्वज्ञ — All-Knowing) is the parent brand. The school is its
+              first public commitment to the people who will use those systems next.
+            </p>
+            <p className="mt-4 text-xs text-body-mid">
+              CIN: U62099AP2024PTC118765
             </p>
           </div>
         </div>

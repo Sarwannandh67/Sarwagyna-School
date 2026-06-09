@@ -136,10 +136,11 @@ export default async function FeedbacksPage() {
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow">Student Feedbacks</p>
           <h1 className="mt-4 text-4xl font-medium leading-tight text-ink sm:text-5xl lg:text-[56px]">
-            What students are saying.
+            What students are actually saying.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-body">
-            Real feedback from real students. Unfiltered, unscripted, unpaid.
+            Real feedback. Not curated. Not filtered for comfort.
+            The good and the &ldquo;here&apos;s what needs to improve.&rdquo;
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <span className="rounded-pill bg-canvas-soft px-5 py-2 text-sm font-medium text-body">
@@ -203,11 +204,11 @@ export default async function FeedbacksPage() {
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow text-canvas-soft/60">Leave Your Feedback</p>
           <h2 className="mt-3 text-3xl font-medium text-canvas-soft sm:text-[48px] sm:leading-tight">
-            Attend a session? Tell us what you thought.
+            Attended a session? Tell us what happened.
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-canvas-soft/60">
-            Honest feedback makes us better. Your review will appear after a quick review by our
-            team.
+            Honest feedback makes the next session better.
+            Your review appears after a quick check by our team.
           </p>
 
           <div className="mt-10 rounded-[12px] bg-ink-soft p-6 sm:p-8">
@@ -220,10 +221,10 @@ export default async function FeedbacksPage() {
       <section className="bg-primary px-4 py-14 sm:px-6">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="text-3xl font-medium text-on-primary sm:text-[48px]">
-            Join our next session.
+            Be in the next room.
           </h2>
           <p className="mt-4 text-lg text-on-primary/85">
-            The best feedback starts with attending.
+            Register free. The learning is the bonus. The room is the opportunity.
           </p>
           <div className="mt-8">
             <Button href="/events" variant="dark" size="lg">

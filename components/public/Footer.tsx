@@ -110,9 +110,7 @@ export function Footer({ settings }: FooterProps) {
             AI tools, and career readiness — taught by founders.
           </p>
           <p className="mt-4 text-xs text-canvas-soft/60">
-            Sarwagyna Private Limited
-            <br />
-            Ongole, Andhra Pradesh
+            A Sarwagyna Private Limited Initiative
           </p>
         </div>
 

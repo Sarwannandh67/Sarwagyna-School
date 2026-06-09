@@ -6,15 +6,15 @@ import { SpeakerCard } from '@/components/public/SpeakerCard';
 export const metadata: Metadata = {
   title: 'Speakers — Founders and Practitioners',
   description:
-    'Every Sarwagyna School session is run by a founder, practitioner, or professional actively doing the work. Meet the people who teach here.',
+    'Every person who teaches at Sarwagyna School is actively building something. Not coaches. Not theorists. Founders and practitioners who decided to share what they know.',
   keywords: [
-    'startup founders speaking at student events India',
     'founder-led sessions for students',
     'Sarwagyna School speakers',
+    'practitioners teaching students',
   ],
   openGraph: {
     title: 'Speakers — Founders Who Give Back | Sarwagyna School',
-    description: 'Meet the founders and practitioners who teach at Sarwagyna School.',
+    description: 'Not coaches. Not theorists. Founders and practitioners who are actively doing the work.',
     url: 'https://school.sarwagyna.com/speakers',
     images: [{ url: '/og/speakers.png', width: 1200, height: 630, alt: 'Sarwagyna School Speakers' }],
   },
@@ -45,7 +45,9 @@ export default async function SpeakersPage() {
             Founders who give back.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-body">
-            Industry leaders, startup founders, and practitioners sharing what they actually know.
+            Every person on this page is actively building something. Not professional speakers.
+            Practitioners who decided to share what they know with the next generation.
+            Some of them are also looking for talent. Pay attention to that.
           </p>
         </div>
       </section>
@@ -60,8 +62,11 @@ export default async function SpeakersPage() {
             </div>
           ) : (
             <div className="rounded-[12px] border-2 border-dashed border-mute/50 p-12 text-center">
-              <h2 className="text-xl font-medium text-ink">Speakers will be announced soon.</h2>
-              <p className="mt-2 text-body">Join the community to get notified.</p>
+              <h2 className="text-xl font-medium text-ink">Speakers being confirmed.</h2>
+              <p className="mt-2 text-body">
+                Each one arrives with knowledge — and sometimes, with an open role or an introduction
+                that changes where you end up.
+              </p>
               <WhatsAppButton href={whatsappUrl || WHATSAPP_CHANNEL_URL} size="md" className="mt-6">
                 Join Community
               </WhatsAppButton>
@@ -74,15 +79,16 @@ export default async function SpeakersPage() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
-              <h2 className="text-3xl font-medium text-canvas">Speak at Sarwagyna School</h2>
+              <h2 className="text-3xl font-medium text-canvas">You don&apos;t need a TED stage. You need a room that listens.</h2>
               <p className="mt-4 text-canvas-soft/80">
-                Share your journey with ambitious students. Reach a community of 400+ learners who
-                are hungry for real-world knowledge — not textbook theory.
+                We have 410+ ambitious students who show up, ask sharp questions, and remember who
+                taught them well. If you are a founder, practitioner, or operator — your session
+                could be the conversation that changes what someone does next.
               </p>
               <ul className="mt-6 space-y-3 text-sm text-canvas-soft/70">
-                <li>• Reach motivated students across Andhra Pradesh and beyond</li>
-                <li>• Build your personal brand as a mentor and leader</li>
-                <li>• Give back while growing your network</li>
+                <li>→ Reach students who actually show up and pay attention</li>
+                <li>→ Find the rare talent worth betting on</li>
+                <li>→ Give back while growing your network</li>
               </ul>
             </div>
             <div className="flex justify-center lg:justify-end">

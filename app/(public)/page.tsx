@@ -4,33 +4,34 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Sarwagyna School — Learn What Your College Forgot to Teach You',
+  title: 'Sarwagyna School — Learn What They Forgot to Teach You',
   description:
-    'Free and low-cost sessions on startup reality, investment, AI tools, and career readiness. Taught by founders and practitioners. Join 410+ students across India.',
+    'Learn what your university forgot to teach you. Startup reality, investment fundamentals, AI tools, and career readiness — taught by founders and practitioners. Free to start.',
   keywords: [
-    'free webinars for college students India',
     'startup learning for students',
-    'AI tools for students India',
-    'career readiness for freshers',
+    'AI tools for students',
+    'career readiness for students',
     'Sarwagyna School',
-    'free online sessions for freshers India',
+    'free online sessions for students',
+    'founder-taught sessions',
   ],
   openGraph: {
-    title: 'Sarwagyna School — Learn What Your College Forgot to Teach You',
+    title: 'Sarwagyna School — Learn What They Forgot to Teach You',
     description:
-      'Free and low-cost sessions on startups, investment, AI, and careers. Taught by founders. Join 410+ students.',
+      'Startup reality, investment fundamentals, AI tools, and career readiness. Taught by founders. Free to start.',
     url: 'https://school.sarwagyna.com',
     images: [{ url: '/og/home.png', width: 1200, height: 630, alt: 'Sarwagyna School — Know everything. Lose nothing.' }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sarwagyna School — Learn What Your College Forgot to Teach You',
-    description: 'Free sessions on startups, AI, investment, and careers — taught by founders. 410+ students.',
+    title: 'Sarwagyna School — Learn What They Forgot to Teach You',
+    description: 'Startup reality, AI, investment, career readiness — taught by founders. Free to start.',
     images: ['/og/home.png'],
   },
   alternates: { canonical: 'https://school.sarwagyna.com' },
 };
+
 import Link from 'next/link';
 import { EventCard } from '@/components/public/EventCard';
 import { Button } from '@/components/ui/Button';
@@ -43,23 +44,29 @@ import {
 import {
   eventTypeColors,
   eventTypeLabels,
-  formatDate,
   formatDateTime,
   getInitials,
   isNavigableHref,
 } from '@/lib/utils';
 import { CommunityFunnel } from '@/components/public/CommunityFunnel';
 import { CommunityFunnelCTA } from '@/components/public/CommunityFunnelCTA';
-import { FeedbackCard } from '@/components/public/FeedbackCard';
+import { CommunityHowItWorksSection } from '@/components/public/CommunityHowItWorksSection';
 import { fetchFeaturedFeedbacks } from '@/lib/data/feedbacks';
 import { WHATSAPP_CHANNEL_URL } from '@/lib/constants';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
+import { WakeUpCallSection } from '@/components/public/WakeUpCallSection';
+import { AccessPitchSection } from '@/components/public/AccessPitchSection';
+import { ComingSpeakersSection } from '@/components/public/ComingSpeakersSection';
+import { SchoolVisionSection } from '@/components/public/SchoolVisionSection';
+import { StudentFeedbacksSection } from '@/components/public/StudentFeedbacksSection';
+import { OpportunityStackSection } from '@/components/public/OpportunityStackSection';
+import { UrgencyBandSection } from '@/components/public/UrgencyBandSection';
 
 const eventTypeCards = [
   {
     type: 'webinar' as const,
     title: 'Webinars',
-    description: 'Live sessions with founders and industry experts on startup reality, careers, and more.',
+    description: 'Live sessions with founders and practitioners on startup reality, careers, and more.',
     icon: '🎙️',
   },
   {
@@ -101,6 +108,12 @@ export default async function HomePage() {
       ?.map((es) => es.speaker)
       .filter((s): s is NonNullable<typeof s> => Boolean(s)) ?? [];
 
+  const daysUntil = upcomingEvent?.event_date
+    ? Math.ceil(
+        (new Date(upcomingEvent.event_date).getTime() - Date.now()) / 86_400_000
+      )
+    : 0;
+
   const orgJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
@@ -108,13 +121,7 @@ export default async function HomePage() {
     url: 'https://school.sarwagyna.com',
     logo: 'https://school.sarwagyna.com/brand/main-logo.png',
     description:
-      "India's school for real-world knowledge — startups, investment, AI tools, and career readiness. Taught by founders and practitioners.",
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Ongole',
-      addressRegion: 'Andhra Pradesh',
-      addressCountry: 'IN',
-    },
+      'A knowledge platform for ambitious students worldwide. Startup reality, investment fundamentals, AI tools, and career readiness — taught by founders and practitioners.',
     parentOrganization: {
       '@type': 'Organization',
       name: 'Sarwagyna Private Limited',
@@ -133,7 +140,7 @@ export default async function HomePage() {
         name: 'What is Sarwagyna School?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Sarwagyna School is a free edtech platform for Indian college students teaching startup reality, investment fundamentals, AI tools, and career readiness through live sessions run by founders and practitioners.',
+          text: 'Sarwagyna School is a knowledge platform for ambitious students worldwide. It teaches startup reality, investment fundamentals, AI tools, and career readiness through live sessions run by founders and practitioners.',
         },
       },
       {
@@ -159,29 +166,28 @@ export default async function HomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
+      {/* 1. Hero */}
       <section className="px-4 py-16 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-6xl">
-          <p className="eyebrow">India&apos;s School for the real world</p>
+          <p className="eyebrow">The school for what comes after university</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-medium leading-tight text-ink sm:text-5xl lg:text-6xl">
-            Learn what your college forgot to teach you
+            Learn what they forgot to teach you.
           </h1>
           <p className="mt-6 max-w-2xl text-lg text-body">
-            Startup reality. Investment fundamentals. AI tools. Career readiness. Taught by founders
-            — free and at low cost.
+            Startup reality. Investment fundamentals. AI tools. Career leverage.
+            Taught by the people actually doing it. Free to start. Built to grow.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
+            <Button href="/events" variant="primary" size="lg">
+              Explore Sessions
+            </Button>
             <WhatsAppButton href={whatsappUrl || WHATSAPP_CHANNEL_URL} size="lg">
-              Join {communityCount}+ Community
+              Join the Community
             </WhatsAppButton>
-            <Button href="/events" variant="dark" size="lg">
-              Explore Events
-            </Button>
-            <Button href="#join-community" variant="outline" size="lg">
-              Why join?
-            </Button>
           </div>
           <div className="mt-10 flex flex-wrap gap-3">
-            {['Founder-led', 'Student first', 'Free to start'].map((pill) => (
+            {['Founder-taught', 'Free to start', 'Open to all'].map((pill) => (
               <span
                 key={pill}
                 className="rounded-pill bg-canvas-soft px-4 py-1.5 text-sm font-medium text-body"
@@ -193,32 +199,44 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* 2. Stats Strip */}
       <section className="bg-canvas-soft px-4 py-12 sm:px-6">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 md:grid-cols-4">
           <div className="text-center">
             <p className="text-3xl font-medium text-ink sm:text-4xl">{stats.completedEvents}</p>
-            <p className="mt-1 text-sm text-body-mid">Completed events</p>
+            <p className="mt-1 text-sm text-body-mid">Sessions completed</p>
           </div>
           <div className="text-center">
             <p className="text-3xl font-medium text-ink sm:text-4xl">{communityCount}+</p>
-            <p className="mt-1 text-sm text-body-mid">Community members</p>
+            <p className="mt-1 text-sm text-body-mid">Students inside</p>
           </div>
+          {stats.speakers > 0 ? (
+            <div className="text-center">
+              <p className="text-3xl font-medium text-ink sm:text-4xl">{stats.speakers}</p>
+              <p className="mt-1 text-sm text-body-mid">Speakers and founders</p>
+            </div>
+          ) : (
+            <div className="text-center">
+              <p className="text-3xl font-medium text-ink sm:text-4xl">Free</p>
+              <p className="mt-1 text-sm text-body-mid">Every session</p>
+            </div>
+          )}
           <div className="text-center">
-            <p className="text-3xl font-medium text-ink sm:text-4xl">{stats.speakers}</p>
-            <p className="mt-1 text-sm text-body-mid">Active speakers</p>
-          </div>
-          <div className="text-center">
-            <p className="text-3xl font-medium text-ink sm:text-4xl">100%</p>
-            <p className="mt-1 text-sm text-body-mid">Free to start</p>
+            <p className="text-3xl font-medium text-ink sm:text-4xl">Free</p>
+            <p className="mt-1 text-sm text-body-mid">Always free to start</p>
           </div>
         </div>
       </section>
 
+      {/* 3. Block A — Wake-Up Call */}
+      <WakeUpCallSection />
+
+      {/* 4. Mini CTA Strip */}
       <section className="border-y border-mute/20 bg-canvas-soft px-4 py-6 sm:px-6">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4">
           <p className="text-sm text-body">
-            <span className="font-medium text-ink">{communityCount}+ students</span> already School
-            on WhatsApp — join before the next event drops.
+            <span className="font-medium text-ink">{communityCount}+ students</span> already inside.
+            Join before the next session drops.
           </p>
           <WhatsAppButton href={whatsappUrl || WHATSAPP_CHANNEL_URL} size="sm">
             Join community
@@ -226,10 +244,11 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* 5. Upcoming Session */}
       <section className="px-4 py-16 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow">Up next</p>
-          <h2 className="mt-2 text-3xl font-medium text-ink">Upcoming event</h2>
+          <h2 className="mt-2 text-3xl font-medium text-ink">Upcoming session</h2>
 
           {upcomingEvent ? (
             <div className="card-dark mt-8 p-6 sm:p-8">
@@ -300,6 +319,10 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* 6. Block B — Access Pitch */}
+      <AccessPitchSection />
+
+      {/* 7. Event Types */}
       <section className="bg-canvas-soft px-4 py-16 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow">What we host</p>
@@ -324,14 +347,18 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* 8. Block C — Coming Speakers */}
+      <ComingSpeakersSection upcomingEvent={upcomingEvent} />
+
+      {/* 9. Past Sessions */}
       <section className="px-4 py-16 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <p className="eyebrow">Past sessions</p>
-              <h2 className="mt-2 text-3xl font-medium text-ink">Events we&apos;ve hosted</h2>
+              <h2 className="mt-2 text-3xl font-medium text-ink">What we covered.</h2>
               <p className="mt-2 text-body">
-                Catch up on sessions you missed — recordings, speakers, and certificates.
+                Sessions you can still learn from — recordings, speakers, and proof you were in the room.
               </p>
             </div>
             {pastEvents.length > 0 && (
@@ -366,32 +393,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {featuredFeedbacks.length > 0 && (
-        <section className="bg-canvas-soft px-4 py-16 sm:px-6">
-          <div className="mx-auto max-w-6xl">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="eyebrow">What students say</p>
-                <h2 className="mt-2 text-3xl font-medium text-ink">
-                  From the people who showed up.
-                </h2>
-              </div>
-              <Link
-                href="/feedbacks"
-                className="text-sm font-medium text-primary hover:underline"
-              >
-                Read all feedbacks →
-              </Link>
-            </div>
-            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {featuredFeedbacks.map((feedback) => (
-                <FeedbackCard key={feedback.id} feedback={feedback} />
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      {/* 10. Block D — School Vision Pitch */}
+      <SchoolVisionSection communityCount={communityCount || '410'} />
 
+      {/* 11–13. Community CTA + The Gap + What You Get */}
       <CommunityFunnel
         communityCount={communityCount}
         whatsappUrl={whatsappUrl}
@@ -399,6 +404,19 @@ export default async function HomePage() {
         speakersCount={stats.speakers}
       />
 
+      {/* 14. Block E — Student Feedbacks */}
+      <StudentFeedbacksSection feedbacks={featuredFeedbacks} />
+
+      {/* 15. How It Works + Final WhatsApp CTA (18) */}
+      <CommunityHowItWorksSection communityCount={communityCount} whatsappUrl={whatsappUrl} />
+
+      {/* 16. Block F — Opportunity Stack */}
+      <OpportunityStackSection communityCount={communityCount || '410'} />
+
+      {/* 17. Block G — Urgency Band */}
+      <UrgencyBandSection upcomingEvent={upcomingEvent} daysUntil={daysUntil} />
+
+      {/* Sticky mobile join bar */}
       <CommunityFunnelCTA communityCount={communityCount} whatsappUrl={whatsappUrl} />
     </>
   );

@@ -66,9 +66,9 @@ const rules = [
   },
   {
     number: '09',
-    title: 'English or Telugu only',
+    title: 'Keep it readable for everyone.',
     description:
-      'Use English or Telugu so everyone can participate. Avoid mixing too many languages in one message.',
+      'Write in a language the majority of the room can follow. If you are not sure, use English. The community should be accessible to everyone in it.',
   },
   {
     number: '10',
@@ -112,9 +112,8 @@ export default function CommunityGuidelinesPage() {
           <div className="card p-6 sm:p-8">
             <h2 className="text-xl font-medium text-ink">Why these rules exist</h2>
             <p className="mt-4 text-body">
-              Sarwagyna School&apos;s WhatsApp community is a space for ambitious students to learn,
-              connect, and grow. These guidelines keep it useful, respectful, and free of noise —
-              so every member gets real value.
+              This community exists for one reason — to give ambitious students access to real
+              knowledge and real opportunities. These rules protect that.
             </p>
           </div>
         </div>

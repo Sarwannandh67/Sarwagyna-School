@@ -6,16 +6,16 @@ import { PartnerApplyForm } from '@/components/public/PartnerApplyForm';
 export const metadata: Metadata = {
   title: 'Partner with Sarwagyna School — Reach 410+ Students',
   description:
-    'Partner with Sarwagyna School to reach 410+ driven Indian college students. Speaking partnerships, hiring pipelines, sponsorships, and knowledge partnerships available.',
+    'Partner with Sarwagyna School to reach 410+ ambitious students. Speaking partnerships, hiring pipelines, sponsorships, and knowledge partnerships available.',
   keywords: [
-    'partner with student community India',
-    'edtech partnership India',
-    'sponsor student events India',
-    'hire interns from student community India',
+    'partner with student community',
+    'edtech partnership',
+    'sponsor student events',
+    'hire students from community',
   ],
   openGraph: {
     title: 'Partner with Sarwagyna School — Reach 410+ Students',
-    description: 'Grow your brand with 410+ ambitious Indian students. Speaking, hiring, sponsoring, and knowledge partnerships.',
+    description: 'Your brand in a room full of the next generation. Speaking, hiring, sponsoring, and knowledge partnerships.',
     url: 'https://school.sarwagyna.com/partners',
     images: [{ url: '/og/partners.png', width: 1200, height: 630, alt: 'Partner with Sarwagyna School' }],
   },
@@ -27,23 +27,27 @@ import { fetchPartners, fetchSiteSettings } from '@/lib/data/public';
 
 const valueProps = [
   {
-    title: 'Audience access',
-    description: 'Reach 400+ ambitious students actively School about startups, careers, and tech.',
+    title: 'Reach the people paying attention',
+    description:
+      'Our community is opt-in, noise-filtered, and engaged. These are not passive scrollers. They are students who show up for live sessions and ask founders real questions.',
     icon: '👥',
   },
   {
-    title: 'Speak and teach',
-    description: 'Host workshops, webinars, or mentorship sessions with an engaged audience.',
+    title: 'Be the founder they remember',
+    description:
+      'Teach a session and you become the person who gave them something real. That kind of brand association does not come from a sponsored post.',
     icon: '🎤',
   },
   {
-    title: 'Hiring pipeline',
-    description: 'Connect with talented students for internships and early-career roles.',
+    title: 'Find your next hire before they graduate',
+    description:
+      'Some of the sharpest talent in any session is still in university. Be in the room before the hiring season starts.',
     icon: '📋',
   },
   {
-    title: 'Brand credibility',
-    description: 'Associate with a growing edtech brand focused on real-world education.',
+    title: 'Shape what the next cohort believes',
+    description:
+      'The founders who teach here influence how these students think about building, money, and work. That influence compounds.',
     icon: '⭐',
   },
 ];
@@ -76,13 +80,14 @@ export default async function PartnersPage() {
     <>
       <section className="px-4 py-16 sm:px-6">
         <div className="mx-auto max-w-6xl">
-          <p className="eyebrow">Partnerships</p>
+          <p className="eyebrow">Partner with Sarwagyna School</p>
           <h1 className="mt-4 text-4xl font-medium text-ink sm:text-5xl">
-            Grow with {communityCount}+ ambitious students.
+            Your brand, in a room full of the next generation.
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-body">
-            Partner with Sarwagyna School to reach motivated learners, share knowledge, and build
-            your hiring pipeline.
+            Sarwagyna School connects companies, founders, and practitioners with {communityCount}+ ambitious
+            students who are actively building their careers and paying attention to who shows up for them.
+            This is not an ad placement. This is a conversation.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href="#apply" variant="primary" size="lg">

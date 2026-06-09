@@ -28,7 +28,7 @@ const validInquiryTypes: InquiryType[] = [
 const quickLinks = [
   {
     title: 'Speak at an event',
-    description: 'Apply to share your expertise with our community.',
+    description: 'Apply to teach a session. The room will remember you.',
     href: '/contact?type=speaker',
   },
   {
@@ -43,7 +43,7 @@ const quickLinks = [
   },
   {
     title: 'Join the community',
-    description: 'Connect with 400+ students on WhatsApp.',
+    description: 'Where opportunities land before they go public.',
     href: '/community',
   },
 ];
@@ -66,8 +66,8 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           <p className="eyebrow">Contact</p>
           <h1 className="mt-4 text-4xl font-medium text-ink sm:text-5xl">We read every message.</h1>
           <p className="mt-4 max-w-2xl text-lg text-body">
-            Questions, partnership ideas, speaker applications — send us a message and we&apos;ll
-            reply within 24–48 hours.
+            Founder wanting to speak. Company wanting to partner. Student with a question.
+            We respond to all of it. Usually within 48 hours.
           </p>
         </div>
       </section>
