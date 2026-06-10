@@ -193,6 +193,7 @@ export function Sidebar({
         >
           <Link
             href="/admin"
+            prefetch={false}
             className={cn('flex items-center gap-2.5', collapsed && 'lg:justify-center')}
           >
             <Image
@@ -230,6 +231,7 @@ export function Sidebar({
                   <li key={item.href}>
                     <Link
                       href={item.href}
+                      prefetch={false}
                       title={collapsed ? item.label : undefined}
                       className={cn(
                         'flex items-center gap-2.5 rounded-xl px-3 py-2 text-[13px] font-medium transition-colors',
