@@ -172,16 +172,20 @@ export function EventForm({ event, allSpeakers }: EventFormProps) {
     const formData = buildFormData(overrideStatus);
 
     startTransition(async () => {
-      const result = event
-        ? await updateEvent(event.id, formData)
-        : await createEvent(formData);
+      try {
+        const result = event
+          ? await updateEvent(event.id, formData)
+          : await createEvent(formData);
 
-      if ('error' in result) {
-        showToast(result.error, 'error');
-      } else if (!event && 'id' in result) {
-        window.location.href = `/admin/events/${result.id}`;
-      } else {
-        showToast('Event saved successfully.', 'success');
+        if ('error' in result) {
+          showToast(result.error, 'error');
+        } else if (!event && 'id' in result) {
+          window.location.href = `/admin/events/${result.id}`;
+        } else {
+          showToast('Event saved successfully.', 'success');
+        }
+      } catch {
+        showToast('Save failed. Please refresh and try again.', 'error');
       }
     });
   };

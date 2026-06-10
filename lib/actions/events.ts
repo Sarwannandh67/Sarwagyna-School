@@ -74,66 +74,81 @@ export async function getEvent(id: string): Promise<EventWithSpeakers | null> {
 export async function createEvent(
   formData: EventFormData
 ): Promise<{ error: string } | { success: true; id: string }> {
-  const slug = formData.slug || generateSlug(formData.title);
-  const { speakers, ...eventData } = formData;
+  try {
+    const slug = formData.slug || generateSlug(formData.title);
+    const { speakers, ...eventData } = formData;
 
-  const { data: event, error } = await supabaseAdmin
-    .from('events')
-    .insert(toEventRow(eventData, slug))
-    .select()
-    .single();
+    const { data: event, error } = await supabaseAdmin
+      .from('events')
+      .insert(toEventRow(eventData, slug))
+      .select()
+      .single();
 
-  if (error) return { error: error.message };
+    if (error) return { error: error.message };
 
-  if (speakers.length > 0) {
-    const speakerRows = speakers.map((s) => ({
-      event_id: event.id,
-      speaker_id: s.speaker_id,
-      role: s.role,
-      sort_order: s.sort_order,
-    }));
-    await supabaseAdmin.from('event_speakers').insert(speakerRows);
+    if (speakers.length > 0) {
+      const speakerRows = speakers.map((s) => ({
+        event_id: event.id,
+        speaker_id: s.speaker_id,
+        role: s.role,
+        sort_order: s.sort_order,
+      }));
+      const { error: speakerError } = await supabaseAdmin.from('event_speakers').insert(speakerRows);
+      if (speakerError) return { error: speakerError.message };
+    }
+
+    revalidatePath('/admin/events');
+    revalidatePath('/');
+    revalidatePath('/events');
+    revalidatePath(`/events/${slug}`);
+    return { success: true, id: event.id };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : 'Unexpected error saving event.' };
   }
-
-  revalidatePath('/admin/events');
-  revalidatePath('/');
-  revalidatePath('/events');
-  revalidatePath(`/events/${slug}`);
-  return { success: true, id: event.id };
 }
 
 export async function updateEvent(
   id: string,
   formData: EventFormData
 ): Promise<{ error: string } | { success: true }> {
-  const { speakers, ...eventData } = formData;
+  try {
+    const { speakers, ...eventData } = formData;
+    const slug = eventData.slug || generateSlug(eventData.title);
 
-  const slug = eventData.slug || generateSlug(eventData.title);
-  const { error } = await supabaseAdmin
-    .from('events')
-    .update(toEventRow(eventData, slug))
-    .eq('id', id);
+    const { error } = await supabaseAdmin
+      .from('events')
+      .update(toEventRow(eventData, slug))
+      .eq('id', id);
 
-  if (error) return { error: error.message };
+    if (error) return { error: error.message };
 
-  await supabaseAdmin.from('event_speakers').delete().eq('event_id', id);
+    const { error: deleteError } = await supabaseAdmin
+      .from('event_speakers')
+      .delete()
+      .eq('event_id', id);
 
-  if (speakers.length > 0) {
-    const speakerRows = speakers.map((s) => ({
-      event_id: id,
-      speaker_id: s.speaker_id,
-      role: s.role,
-      sort_order: s.sort_order,
-    }));
-    await supabaseAdmin.from('event_speakers').insert(speakerRows);
+    if (deleteError) return { error: deleteError.message };
+
+    if (speakers.length > 0) {
+      const speakerRows = speakers.map((s) => ({
+        event_id: id,
+        speaker_id: s.speaker_id,
+        role: s.role,
+        sort_order: s.sort_order,
+      }));
+      const { error: speakerError } = await supabaseAdmin.from('event_speakers').insert(speakerRows);
+      if (speakerError) return { error: speakerError.message };
+    }
+
+    revalidatePath('/admin/events');
+    revalidatePath(`/admin/events/${id}`);
+    revalidatePath('/');
+    revalidatePath('/events');
+    revalidatePath(`/events/${slug}`);
+    return { success: true };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : 'Unexpected error saving event.' };
   }
-
-  revalidatePath('/admin/events');
-  revalidatePath(`/admin/events/${id}`);
-  revalidatePath('/');
-  revalidatePath('/events');
-  revalidatePath(`/events/${slug}`);
-  return { success: true };
 }
 
 export async function deleteEvent(id: string) {
