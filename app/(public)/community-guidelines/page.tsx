@@ -3,16 +3,35 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 
 export const metadata: Metadata = {
-  title: 'Community Guidelines — Sarwagyna School',
+  title: 'Community Guidelines',
   description:
     'The rules of the Sarwagyna School WhatsApp community. Ten guidelines every member must follow.',
+  keywords: [
+    'Sarwagyna School community guidelines',
+    'WhatsApp community rules',
+    'code of conduct',
+    'community rules',
+  ],
+  alternates: { canonical: '/community-guidelines' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
   openGraph: {
+    type: 'article',
+    siteName: 'Sarwagyna School',
+    locale: 'en_IN',
     title: 'Community Guidelines — Sarwagyna School',
     description: 'Ten rules. One community. Read before joining.',
-    url: 'https://school.sarwagyna.com/community-guidelines',
+    url: '/community-guidelines',
+    modifiedTime: '2026-06-01T00:00:00.000Z',
   },
-  robots: { index: true, follow: false },
-  alternates: { canonical: 'https://school.sarwagyna.com/community-guidelines' },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Community Guidelines — Sarwagyna School',
+    description: 'Ten rules. One community. Read before joining.',
+  },
 };
 
 const rules = [

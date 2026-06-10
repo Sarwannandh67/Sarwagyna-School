@@ -16,6 +16,13 @@ const navLinks = [
   { href: '/feedbacks', label: 'Feedbacks' },
   { href: '/community-guidelines', label: 'Guidelines' },
   { href: '/verify', label: 'Verify Certificate' },
+  { href: '/terms', label: 'Terms' },
+  { href: '/privacy', label: 'Privacy Policy' },
+];
+
+const legalLinks = [
+  { href: '/terms', label: 'Terms' },
+  { href: '/community-guidelines', label: 'Community Guidelines' },
 ];
 
 export interface FooterProps {
@@ -157,8 +164,19 @@ export function Footer({ settings }: FooterProps) {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-6xl border-t border-canvas-soft/10 pt-6 text-center text-xs text-canvas-soft/60">
-        © {new Date().getFullYear()} Sarwagyna Private Limited. Know everything. Lose nothing.
+      <div className="mx-auto mt-10 flex max-w-6xl flex-col items-center gap-4 border-t border-canvas-soft/10 pt-6 text-xs text-canvas-soft/60 sm:flex-row sm:justify-between">
+        <p className="order-2 text-center sm:order-1 sm:text-left">
+          © {new Date().getFullYear()} Sarwagyna Private Limited. Know everything. Lose nothing.
+        </p>
+        <ul className="order-1 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:order-2">
+          {legalLinks.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} className="transition-colors hover:text-canvas">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
   );

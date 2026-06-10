@@ -20,6 +20,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/feedbacks`, priority: 0.75, changeFrequency: 'daily' },
     { url: `${BASE}/verify`, priority: 0.5, changeFrequency: 'monthly' },
     { url: `${BASE}/community-guidelines`, priority: 0.4, changeFrequency: 'monthly' },
+    { url: `${BASE}/terms`, priority: 0.4, changeFrequency: 'monthly' },
+    { url: `${BASE}/privacy`, priority: 0.4, changeFrequency: 'monthly' },
   ];
 
   const eventPages: MetadataRoute.Sitemap = (events ?? []).map((e) => ({
