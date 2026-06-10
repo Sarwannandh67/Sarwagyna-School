@@ -98,6 +98,7 @@ export async function createEvent(
   revalidatePath('/admin/events');
   revalidatePath('/');
   revalidatePath('/events');
+  revalidatePath(`/events/${slug}`);
   return { success: true, id: event.id };
 }
 
@@ -131,6 +132,7 @@ export async function updateEvent(
   revalidatePath(`/admin/events/${id}`);
   revalidatePath('/');
   revalidatePath('/events');
+  revalidatePath(`/events/${slug}`);
   return { success: true };
 }
 
